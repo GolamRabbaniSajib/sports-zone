@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import UpdateProfile from "../pages/UpdateProfile";
+import AddEquipment from "../pages/AddEquipment";
 
 
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: '/updateProfile',
                 element: <UpdateProfile></UpdateProfile>
+            },
+            {
+                path: '/addEquip',
+                element: <AddEquipment></AddEquipment>
             }
         ]
     },
