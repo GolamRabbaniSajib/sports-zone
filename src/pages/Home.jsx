@@ -22,7 +22,7 @@ const Home = () => {
             {/* items */}
             <section>
                 <h1>{items.length}</h1>
-                <div>
+                <div className="grid md:grid-cols-3 gap-4">
                     {
                         items.map(item => <ItemCard key={item._id} item={item}></ItemCard>)
                     }

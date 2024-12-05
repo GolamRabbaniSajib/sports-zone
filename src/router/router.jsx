@@ -8,6 +8,7 @@ import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import UpdateProfile from "../pages/UpdateProfile";
 import AddEquipment from "../pages/AddEquipment";
+import ViewDetail from "../pages/ViewDetail";
 
 
 
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
             {
                 path: '/addEquip',
                 element: <AddEquipment></AddEquipment>
+            },
+            {
+                path: '/viewDetails/:id',
+                element: <ViewDetail></ViewDetail>,
+                loader: ({params})=> fetch(`http://localhost:5000/litems/${params.id}`)
             }
         ]
     },
