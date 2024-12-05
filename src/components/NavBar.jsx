@@ -1,6 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const links = (
     <>
       <li>
@@ -50,10 +53,50 @@ const NavBar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <button class=" bg-blue-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
-            Login
-          </button>
+        <div className="navbar-end space-x-3">
+          <div>
+            {user && user.email ? (
+              <div className="dropdown dropdown-hover">
+                <div tabIndex={0} role="button">
+                  <div className="w-10 rounded-full">
+                    <img
+                      className="rounded-full"
+                      alt="sajib"
+                      src={`${user?.photoURL}`}
+                    />
+                  </div>
+                </div>
+                <div
+                  tabIndex={0}
+                  className="dropdown-content menu rounded-box z-[1] w-auto p-4 shadow bg-orange-50 space-y-2"
+                >
+                  <p>{user.displayName}</p>
+                  <Link to={'/profile'}><button className="bg-blue-500 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 hover:bg-blue-500 w-full">
+                    Your Profile
+                  </button></Link>
+                </div>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+          <div>
+            {user && user.email ? (
+              <button
+                onClick={logOut}
+                className="bg-red-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-red-500/50"
+              >
+                {" "}
+                LogOut
+              </button>
+            ) : (
+              <Link to="/auth/login">
+                <button className="bg-blue-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
+                  Login
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>

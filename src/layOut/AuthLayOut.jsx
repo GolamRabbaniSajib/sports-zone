@@ -1,9 +1,7 @@
-import { Outlet } from "react-router-dom";
-import Footer from "../components/Footer";
-import NavBar from "../components/NavBar";
 import 'react-toastify/dist/ReactToastify.css';
-
-const HomeLayOut = () => {
+import NavBar from '../components/NavBar';
+import { Outlet } from 'react-router-dom';
+const AuthLayOut = () => {
     return (
         <div>
             {/* navbar */}
@@ -14,12 +12,8 @@ const HomeLayOut = () => {
             <main>
                 <Outlet></Outlet>
             </main>
-            {/* footer */}
-            <footer>
-                <Footer></Footer>
-            </footer>
         </div>
     );
 };
 
-export default HomeLayOut;
+export default AuthLayOut;
