@@ -36,9 +36,9 @@ const router = createBrowserRouter([
                 element: <AddEquipment></AddEquipment>
             },
             {
-                path: '/viewDetails/:id',
+                path: '/viewDetail/:id',
                 element: <ViewDetail></ViewDetail>,
-                loader: ({params})=> fetch(`http://localhost:5000/litems/${params.id}`)
+                loader: ({params})=> fetch(`http://localhost:5000/items/${params.id}`)
             }
         ]
     },
