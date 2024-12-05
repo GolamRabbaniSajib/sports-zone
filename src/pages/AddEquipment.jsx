@@ -1,9 +1,47 @@
+import Swal from "sweetalert2";
+
 const AddEquipment = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // get form data
+    const form = new FormData(e.target);
+    const photo = form.get("photo");
+    const name = form.get("name");
+    const email = form.get("email");
+    const categoryName = form.get("categoryName");
+    const price = form.get("price");
+    const description = form.get("description");
+    const rating = form.get("rating");
+    const customization = form.get("customization");
+    const processingTime = form.get("processingTime");
+    const stockStatus = form.get("stockStatus");
+    const newItem = {photo, name, email, categoryName, price, description, rating, customization, processingTime, stockStatus}
+    console.log(newItem)
+    fetch('http://localhost:5000/items', {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(newItem)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        if(data.insertedId){
+            Swal.fire({
+                title: 'success!',
+                text: 'Item added successfully',
+                icon: 'success',
+                confirmButtonText: 'ok'
+              })
+        }
+    })
+  };
   return (
     <div>
       <div className="bg-gray-100 min-h-screen flex items-center justify-center px-4 py-4">
         <form
-          //   onSubmit={handleSubmit}
+          onSubmit={handleSubmit}
           className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl space-y-6"
         >
           <h2 className="text-3xl font-bold text-gray-800 text-center">
@@ -23,7 +61,7 @@ const AddEquipment = () => {
               <input
                 type="text"
                 name="photo"
-                placeholder="enter photo URL"
+                placeholder="Enter photo URL"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               />
             </div>
@@ -38,7 +76,7 @@ const AddEquipment = () => {
               </label>
               <input
                 type="text"
-                name="itemName"
+                name="name"
                 placeholder="Enter item name"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               />
@@ -167,6 +205,7 @@ const AddEquipment = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 value="email"
                 readOnly
                 className="w-full border border-gray-300 bg-gray-100 rounded-lg px-4 py-2"
@@ -192,9 +231,7 @@ const AddEquipment = () => {
 
           {/* Submit Button */}
           <div className="flex justify-center">
-            <button
-              className="bg-blue-500 text-white w-full px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition transform duration-300 hover:scale-105 active:scale-95"
-            >
+            <button className="bg-blue-500 text-white w-full px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition transform duration-300 hover:scale-105 active:scale-95">
               Add Item
             </button>
           </div>

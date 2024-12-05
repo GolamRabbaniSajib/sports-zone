@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -23,15 +24,11 @@ const Login = () => {
         const user = result.user;
         setUser(user);
 
-        toast.success("Successfully Login", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
+        Swal.fire({
+          icon: "success",
+          title: "User Login successful",
+          showConfirmButton: false,
+          timer: 1500
         });
         navigate(location?.state ? location.state : "/");
       })
