@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 const ViewDetail = () => {
   const item = useLoaderData();
+  console.log(item);
   const {
     _id,
     photo,
@@ -15,7 +16,7 @@ const ViewDetail = () => {
     processingTime,
     stockStatus,
   } = item;
-  console.log(item);
+  
   return (
     <div className="w-11/12 mx-auto py-4">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 max-w-auto mx-auto">

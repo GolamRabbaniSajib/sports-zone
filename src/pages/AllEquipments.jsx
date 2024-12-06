@@ -1,20 +1,21 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllEquipments = () => {
-    const items = useLoaderData();
-  const {
-    _id,
-    photo,
-    name,
-    email,
-    categoryName,
-    price,
-    description,
-    rating,
-    customization,
-    processingTime,
-    stockStatus,
-  } = items;
+  const items = useLoaderData();
+  console.log(items);
+  // const {
+  //   _id,
+  //   photo,
+  //   name,
+  //   email,
+  //   categoryName,
+  //   price,
+  //   description,
+  //   rating,
+  //   customization,
+  //   processingTime,
+  //   stockStatus,
+  // } = items;
   return (
     <div>
       <div className="min-h-screen bg-gray-100 p-6">
@@ -22,31 +23,46 @@ const AllEquipments = () => {
           <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg">
             {/* Table Header */}
             <thead>
-              <tr className="bg-indigo-500 text-white">
+              <tr className="bg-indigo-500 text-white ">
+                <th className="py-3 px-4 text-left font-semibold">Photo</th>
                 <th className="py-3 px-4 text-left font-semibold">Name</th>
                 <th className="py-3 px-4 text-left font-semibold">Category</th>
+                <th className="py-3 px-4 text-left font-semibold">Stock</th>
                 <th className="py-3 px-4 text-left font-semibold">Price</th>
                 <th className="py-3 px-4 text-left font-semibold">Actions</th>
               </tr>
             </thead>
             {/* Table Body */}
             <tbody>
-              {equipmentList.map((equipment, index) => (
+              {items.map((item, idx) => (
                 <tr
-                  key={index}
+                  key={idx}
                   className="hover:bg-gray-100 border-t border-gray-200"
                 >
-                  <td className="py-3 px-4 text-gray-800">{name}</td>
+                  <td className="py-3 px-4 text-gray-800">
+                    <div className="avatar">
+                      <div className="mask mask-squircle h-12 w-12">
+                        <img
+                          src={item.photo}
+                          alt="Avatar Tailwind CSS Component"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-3 px-4 text-gray-800">{item.name}</td>
                   <td className="py-3 px-4 text-gray-600">
-                    {categoryName}
+                    {item.categoryName}
                   </td>
                   <td className="py-3 px-4 text-gray-800">
-                    ${price}
+                    {item.stockStatus}
                   </td>
+                  <td className="py-3 px-4 text-gray-800">${item.price}</td>
                   <td className="py-3 px-4">
-                    <button className="bg-indigo-500 text-white py-1 px-3 rounded-lg hover:bg-indigo-600">
-                      View Details
-                    </button>
+                    <Link to={`/viewDetail/${item._id}`}>
+                      <button className="bg-blue-500 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 hover:bg-blue-500 w-full">
+                        View Details
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               ))}
