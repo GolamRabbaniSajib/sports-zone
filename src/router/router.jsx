@@ -9,6 +9,8 @@ import Profile from "../pages/Profile";
 import UpdateProfile from "../pages/UpdateProfile";
 import AddEquipment from "../pages/AddEquipment";
 import ViewDetail from "../pages/ViewDetail";
+import AllEquipments from "../pages/AllEquipments";
+import MyEquipments from "../pages/MyEquipments";
 
 
 
@@ -39,6 +41,15 @@ const router = createBrowserRouter([
                 path: '/viewDetail/:id',
                 element: <ViewDetail></ViewDetail>,
                 loader: ({params})=> fetch(`http://localhost:5000/items/${params.id}`)
+            },
+            {
+                path: '/all',
+                element: <AllEquipments></AllEquipments>,
+                // loader: ()=> fetch('http://localhost:5000/items')
+            },
+            {
+                path: '/myEquip',
+                element: <MyEquipments></MyEquipments>
             }
         ]
     },
