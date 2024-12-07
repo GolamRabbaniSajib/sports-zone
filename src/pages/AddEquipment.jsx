@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
 const AddEquipment = () => {
+  const {user} = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
     // get form data
@@ -206,7 +209,7 @@ const AddEquipment = () => {
               <input
                 type="email"
                 name="email"
-                value="email"
+                value={user?.email}
                 readOnly
                 className="w-full border border-gray-300 bg-gray-100 rounded-lg px-4 py-2"
               />
@@ -222,7 +225,7 @@ const AddEquipment = () => {
               </label>
               <input
                 type="text"
-                value="user name"
+                value={user?.displayName}
                 readOnly
                 className="w-full border border-gray-300 bg-gray-100 rounded-lg px-4 py-2"
               />
