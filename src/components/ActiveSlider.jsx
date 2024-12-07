@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import adidasImg from "../assets/adidas.png";
 import nikeImg from "../assets/nike.png";
 import pumaImg from "../assets/puma.png";
+import { Roll, Zoom } from "react-awesome-reveal";
 const ActiveSlider = () => {
   const settings = {
     dots: true,
@@ -15,21 +16,27 @@ const ActiveSlider = () => {
   return (
     <div className="w-11/12 mx-auto py-10">
       <div className="py-9">
-        <h1 className="text-3xl font-bold text-center"><span className="text-blue-400">Top</span> Seller</h1>
+        <h1 className="text-3xl font-bold text-center">
+          <span className="text-blue-400">Top</span> Seller
+        </h1>
       </div>
       <Slider {...settings}>
         <div className="hero bg-base-200">
           <div className="hero-content flex-col lg:flex-row">
-            <img
-              src="https://i.ibb.co.com/DrP0C5n/premium-photo-1689977968861-9c91dbb16049.jpg"
-              className="rounded-lg shadow-2xl lg:mr-32 md:max-w-md w-auto"
-            />
-            <div>
-              <h1 className="text-5xl font-bold">Robin jon</h1>
-              <p className="py-6">
-                International award wining Professor & best selling Auth.
-              </p>
-            </div>
+            <Roll>
+              <img
+                src="https://i.ibb.co.com/DrP0C5n/premium-photo-1689977968861-9c91dbb16049.jpg"
+                className="rounded-lg shadow-2xl lg:mr-32 md:max-w-md w-auto"
+              />
+            </Roll>
+            <Zoom>
+              <div>
+                <h1 className="text-5xl font-bold">Robin jon</h1>
+                <p className="py-6">
+                  International award wining Professor & best selling Auth.
+                </p>
+              </div>
+            </Zoom>
           </div>
         </div>
         <div className="hero bg-base-200">
@@ -41,7 +48,8 @@ const ActiveSlider = () => {
             <div>
               <h1 className="text-5xl font-bold">Imtiaz Ahmed</h1>
               <p className="py-6">
-              Award-winning Udemy instructor who is highly experienced in big data technologies and enterprise software architectures.
+                Award-winning Udemy instructor who is highly experienced in big
+                data technologies and enterprise software architectures.
               </p>
             </div>
           </div>
@@ -55,7 +63,9 @@ const ActiveSlider = () => {
             <div>
               <h1 className="text-5xl font-bold">Todd Birzer</h1>
               <p className="py-6">
-              Principal consultant at Kevolve Product Management, author of Becoming a More Strategic Product Manager, and has an MBA from Wharton at the University of Pennsylvania.
+                Principal consultant at Kevolve Product Management, author of
+                Becoming a More Strategic Product Manager, and has an MBA from
+                Wharton at the University of Pennsylvania.
               </p>
             </div>
           </div>
