@@ -11,6 +11,7 @@ import AddEquipment from "../pages/AddEquipment";
 import ViewDetail from "../pages/ViewDetail";
 import AllEquipments from "../pages/AllEquipments";
 import MyEquipments from "../pages/MyEquipments";
+import UpdateItem from "../pages/UpdateItem";
 
 
 
@@ -42,11 +43,11 @@ const router = createBrowserRouter([
                 element: <ViewDetail></ViewDetail>,
                 loader: ({params})=> fetch(`http://localhost:5000/item/${params.id}`)
             },
-            // {
-            //     path: '/all/viewDetail/:id',
-            //     element: <ViewDetail></ViewDetail>,
-            //     loader: ({params})=> fetch(`http://localhost:5000/items/${params.id}`)
-            // },
+            {
+                path: '/updateItem/:id',
+                element: <UpdateItem></UpdateItem>,
+                loader: ({params})=> fetch(`http://localhost:5000/item/${params.id}`)
+            },
             {
                 path: '/all',
                 element: <AllEquipments></AllEquipments>,

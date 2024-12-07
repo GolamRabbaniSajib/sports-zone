@@ -1,18 +1,48 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyEquipments = () => {
   const [item, setItem] = useState([]);
   const { user } = useContext(AuthContext);
-  console.log(user);
   useEffect(() => {
     fetch(`http://localhost:5000/items/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setItem(data);
       });
   }, [user?.email]);
+  // delete data
+
+  const handleDelete = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/items/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your item has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
+  };
   return (
     <div className="w-11/12 mx-auto pt-16">
       <div className="grid gap-4 md:grid-cols-3">
@@ -46,20 +76,19 @@ const MyEquipments = () => {
 
             {/* Buttons */}
             <div className="px-6 py-4 flex justify-between items-center space-x-2">
+              <Link to={`/viewDetail/${i._id}`}>
+                <button className="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition">
+                  View
+                </button>
+              </Link>
+
+              <Link to={`/updateItem/${i._id}`}>
+                <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition">
+                  Update
+                </button>
+              </Link>
               <button
-                //   onClick={onViewDetails}
-                className="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition"
-              >
-                View
-              </button>
-              <button
-                //   onClick={onUpdate}
-                className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition"
-              >
-                Update
-              </button>
-              <button
-                //   onClick={onDelete}
+                onClick={() => handleDelete(i._id)}
                 className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600 transition"
               >
                 Delete

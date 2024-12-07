@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ViewDetail = () => {
   const item = useLoaderData();
@@ -16,7 +16,7 @@ const ViewDetail = () => {
     processingTime,
     stockStatus,
   } = item;
-  
+
   return (
     <div className="w-11/12 mx-auto py-4">
       <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 max-w-auto mx-auto">
@@ -74,9 +74,11 @@ const ViewDetail = () => {
             </p>
             {/* Action Button */}
             <div className="mt-4">
-              <button className="bg-blue-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
-                Go to home page
-              </button>
+              <Link to={"/"}>
+                <button className="bg-blue-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
+                  Go to home page
+                </button>
+              </Link>
             </div>
           </div>
         </div>

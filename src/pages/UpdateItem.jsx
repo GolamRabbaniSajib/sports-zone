@@ -1,10 +1,13 @@
 import { useContext } from "react";
-import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
+import { useLoaderData } from "react-router-dom";
 
-const AddEquipment = () => {
-  const {user} = useContext(AuthContext);
-  const handleSubmit = (e) => {
+const UpdateItem = () => {
+    const item = useLoaderData();
+    const {_id, photo, name, email, userName, categoryName, price, description, rating, customization, processingTime, stockStatus} = item;
+  const { user } = useContext(AuthContext);
+  const handleUpdate = (e) => {
     e.preventDefault();
     // get form data
     const form = new FormData(e.target);
@@ -19,35 +22,47 @@ const AddEquipment = () => {
     const customization = form.get("customization");
     const processingTime = form.get("processingTime");
     const stockStatus = form.get("stockStatus");
-    const newItem = {photo, name, email, userName, categoryName, price, description, rating, customization, processingTime, stockStatus}
-    fetch('http://localhost:5000/items', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(newItem)
+    const updateItem = {
+      photo,
+      name,
+      email,
+      userName,
+      categoryName,
+      price,
+      description,
+      rating,
+      customization,
+      processingTime,
+      stockStatus,
+    };
+    fetch(`http://localhost:5000/items/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateItem),
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.insertedId){
-            Swal.fire({
-                title: 'success!',
-                text: 'Item added successfully',
-                icon: 'success',
-                confirmButtonText: 'ok'
-              })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
+            title: "success!",
+            text: "Item added successfully",
+            icon: "success",
+            confirmButtonText: "ok",
+          });
         }
-    })
+      });
   };
   return (
     <div>
       <div className="bg-gray-100 min-h-screen flex items-center justify-center px-4 py-4">
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleUpdate}
           className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl space-y-6"
         >
           <h2 className="text-3xl font-bold text-gray-800 text-center">
-            Add New Item
+            Update Your Item Data
           </h2>
 
           {/* Form Grid */}
@@ -63,6 +78,7 @@ const AddEquipment = () => {
               <input
                 type="text"
                 name="photo"
+                defaultValue={photo}
                 placeholder="Enter photo URL"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               />
@@ -79,6 +95,7 @@ const AddEquipment = () => {
               <input
                 type="text"
                 name="name"
+                defaultValue={name}
                 placeholder="Enter item name"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               />
@@ -95,6 +112,7 @@ const AddEquipment = () => {
               <input
                 type="text"
                 name="categoryName"
+                defaultValue={categoryName}
                 placeholder="Enter category name"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               />
@@ -111,6 +129,7 @@ const AddEquipment = () => {
               <input
                 type="number"
                 name="price"
+                defaultValue={price}
                 placeholder="Enter price"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               />
@@ -126,6 +145,7 @@ const AddEquipment = () => {
               </label>
               <textarea
                 name="description"
+                defaultValue={description}
                 placeholder="Enter item description"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
               />
@@ -142,6 +162,7 @@ const AddEquipment = () => {
               <input
                 type="number"
                 name="rating"
+                defaultValue={rating}
                 max="5"
                 step="0.1"
                 placeholder="Enter rating (out of 5)"
@@ -159,6 +180,7 @@ const AddEquipment = () => {
               </label>
               <input
                 type="text"
+                defaultValue={customization}
                 name="customization"
                 placeholder="Enter customizations (e.g., extra grip)"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
@@ -175,6 +197,7 @@ const AddEquipment = () => {
               </label>
               <input
                 type="date"
+                defaultValue={processingTime}
                 name="processingTime"
                 placeholder="Enter processing/delivery time"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
@@ -191,6 +214,7 @@ const AddEquipment = () => {
               </label>
               <input
                 type="number"
+                defaultValue={stockStatus}
                 name="stockStatus"
                 placeholder="Enter available quantity"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
@@ -235,7 +259,7 @@ const AddEquipment = () => {
           {/* Submit Button */}
           <div className="flex justify-center">
             <button className="bg-blue-500 text-white w-full px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition transform duration-300 hover:scale-105 active:scale-95">
-              Add Item
+              Update Item
             </button>
           </div>
         </form>
@@ -244,4 +268,4 @@ const AddEquipment = () => {
   );
 };
 
-export default AddEquipment;
+export default UpdateItem;

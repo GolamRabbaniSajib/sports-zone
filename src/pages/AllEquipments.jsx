@@ -2,22 +2,21 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const AllEquipments = () => {
   const items = useLoaderData();
-  console.log(items);
-  // const {
-  //   _id,
-  //   photo,
-  //   name,
-  //   email,
-  //   categoryName,
-  //   price,
-  //   description,
-  //   rating,
-  //   customization,
-  //   processingTime,
-  //   stockStatus,
-  // } = items;
   return (
     <div>
+      <h1 className="text-3xl font-semibold text-center py-10">
+        All Sports <span className="text-blue-500">Equipments</span>
+      </h1>
+      <div className="w-11/12 mx-auto flex justify-start pt-10">
+        <div className="md:flex items-center">
+          <button className="bg-green-500 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-green-500/50 hover:bg-green-500 w-full md:mr-8">
+            Add More
+          </button>
+          <button className="bg-blue-300 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 hover:bg-blue-300 w-full">
+            Sort By Price
+          </button>
+        </div>
+      </div>
       <div className="min-h-screen bg-gray-100 p-6">
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-lg">
