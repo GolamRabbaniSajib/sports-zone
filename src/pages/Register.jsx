@@ -3,7 +3,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
-import { AuthContext } from "../provider/AuthProvider";
+import { auth, AuthContext } from "../provider/AuthProvider";
+import { signInWithPopup } from "firebase/auth";
 
 const Register = () => {
   const [show, setShow] = useState(false);

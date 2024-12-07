@@ -1,19 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { Tooltip } from "react-tooltip";
 
 const NavBar = () => {
   const [theme, setThem] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
-  const handleTheme = e=> {
-    if(e.target.checked){
-      setThem("dark")
+  const handleTheme = (e) => {
+    if (e.target.checked) {
+      setThem("dark");
+    } else {
+      setThem("light");
     }
-    else{
-      setThem("light")
-    }
-  }
+  };
   useEffect(() => {
     localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme");
@@ -37,7 +37,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="bg-cyan-50">
+    <div className="bg-cyan-300">
       <div className="navbar w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -75,14 +75,14 @@ const NavBar = () => {
             <input
               type="checkbox"
               onChange={handleTheme}
-              checked={theme === "light"? false : true}
+              checked={theme === "light" ? false : true}
               className="theme-controller"
               value="synthwave"
             />
 
             {/* sun icon */}
             <svg
-              className="swap-off h-10 w-10 fill-current"
+              className="swap-off h-7 w-7 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -91,7 +91,7 @@ const NavBar = () => {
 
             {/* moon icon */}
             <svg
-              className="swap-on h-10 w-10 fill-current"
+              className="swap-on h-7 w-7 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -100,28 +100,22 @@ const NavBar = () => {
           </label>
           <div>
             {user && user.email ? (
-              <div className="dropdown dropdown-hover">
-                <div tabIndex={0} role="button">
+              <Link to={"/profile"}>
+                <button
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={`${user.displayName}`}
+                  data-tooltip-place="bottom"
+                >
                   <div className="w-10 rounded-full">
                     <img
-                      className="rounded-full"
+                    className="rounded-full"
                       alt="sajib"
                       src={`${user?.photoURL}`}
                     />
                   </div>
-                </div>
-                <div
-                  tabIndex={0}
-                  className="dropdown-content menu rounded-box z-[1] w-auto p-4 shadow bg-orange-50 space-y-2"
-                >
-                  <p>{user.displayName}</p>
-                  <Link to={"/profile"}>
-                    <button className="bg-blue-500 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 hover:bg-blue-500 w-full">
-                      Your Profile
-                    </button>
-                  </Link>
-                </div>
-              </div>
+                </button>
+                <Tooltip id="my-tooltip" />
+              </Link>
             ) : (
               ""
             )}

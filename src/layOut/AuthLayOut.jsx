@@ -1,4 +1,5 @@
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-tooltip/dist/react-tooltip.css'
 import NavBar from '../components/NavBar';
 import { Outlet } from 'react-router-dom';
 const AuthLayOut = () => {

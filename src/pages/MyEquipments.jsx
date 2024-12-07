@@ -38,6 +38,8 @@ const MyEquipments = () => {
                 text: "Your item has been deleted.",
                 icon: "success",
               });
+              const remaining = item.filter(it => it._id !== id);
+              setItem(remaining);
             }
           });
       }

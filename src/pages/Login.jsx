@@ -3,8 +3,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { AuthContext } from "../provider/AuthProvider";
+import { auth, AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { signInWithPopup } from "firebase/auth";
 
 const Login = () => {
   const [show, setShow] = useState(false);
