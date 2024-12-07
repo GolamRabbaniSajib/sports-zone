@@ -7,6 +7,7 @@ import { auth, AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { signInWithPopup } from "firebase/auth";
 import { Bounce } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -60,6 +61,9 @@ const Login = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Sport | Login</title>
+      </Helmet>
       <Bounce>
         <div className="flex justify-center items-center min-h-screen">
           <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl p-6 border">

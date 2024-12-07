@@ -6,6 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { auth, AuthContext } from "../provider/AuthProvider";
 import { signInWithPopup } from "firebase/auth";
 import { Bounce } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const [show, setShow] = useState(false);
@@ -98,6 +99,9 @@ const Register = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Sport | Register</title>
+      </Helmet>
       <Bounce>
         <div className="flex justify-center items-center min-h-screen">
           <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl p-6 border">

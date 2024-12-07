@@ -3,6 +3,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { useLoaderData } from "react-router-dom";
 import { Zoom } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
 
 const UpdateItem = () => {
   const item = useLoaderData();
@@ -49,7 +50,7 @@ const UpdateItem = () => {
       processingTime,
       stockStatus,
     };
-    fetch(`http://localhost:5000/items/${_id}`, {
+    fetch(`https://sport-equipment-server-six.vercel.app/items/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -70,6 +71,9 @@ const UpdateItem = () => {
   };
   return (
     <div>
+        <Helmet>
+            <title>Sport | Update Item</title>
+        </Helmet>
       <Zoom>
         <div className="bg-gray-100 min-h-screen flex items-center justify-center px-4 py-4">
           <form

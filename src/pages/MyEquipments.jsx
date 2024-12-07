@@ -3,12 +3,14 @@ import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Slide } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
+import { IoIosAddCircle } from "react-icons/io";
 
 const MyEquipments = () => {
   const [item, setItem] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/items/${user?.email}`)
+    fetch(`https://sport-equipment-server-six.vercel.app/items/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setItem(data);
@@ -28,7 +30,7 @@ const MyEquipments = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/items/${id}`, {
+        fetch(`https://sport-equipment-server-six.vercel.app/items/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -48,6 +50,17 @@ const MyEquipments = () => {
   };
   return (
     <div className="w-11/12 mx-auto pt-16">
+      <Helmet>
+        <title>Sport | My Equipments</title>
+      </Helmet>
+      <div className="py-8 space-y-4">
+        <h1 className="text-4xl font-semibold text-center">My Equipments</h1>
+        <div className="flex justify-center items-center">
+          <Link to={'/addEquip'}>
+            <button className="bg-blue-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 flex items-center justify-around"><IoIosAddCircle /> Add One</button>
+          </Link>
+        </div>
+      </div>
       <Slide>
         <div className="grid gap-4 md:grid-cols-3">
           {item.map((i) => (

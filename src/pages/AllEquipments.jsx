@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { Flip } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
+import { BsSortDown } from "react-icons/bs";
+import { IoAddCircle } from "react-icons/io5";
+import { MdPreview } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
 
 const AllEquipments = () => {
@@ -13,6 +17,9 @@ const AllEquipments = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Sport | All Equipments</title>
+      </Helmet>
       <Flip>
         <div>
           <h1 className="text-3xl font-semibold text-center py-10">
@@ -22,7 +29,7 @@ const AllEquipments = () => {
             <div className="md:flex items-center">
               <Link to={"/addEquip"}>
                 <button className="bg-green-500 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-green-500/50 hover:bg-green-500 w-full">
-                  Add More
+                <IoAddCircle /> Add More
                 </button>
               </Link>
               <div className="md:ml-14">
@@ -30,7 +37,7 @@ const AllEquipments = () => {
                   onClick={handleSort}
                   className="bg-blue-300 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 hover:bg-blue-300 w-full"
                 >
-                  Sort By Price
+                  <BsSortDown /> Sort By Price
                 </button>
               </div>
             </div>
@@ -81,7 +88,7 @@ const AllEquipments = () => {
                       <td className="py-3 px-4">
                         <Link to={`/viewDetail/${item._id}`}>
                           <button className="bg-blue-500 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 hover:bg-blue-500 w-full">
-                            View Details
+                          <MdPreview /> View Details
                           </button>
                         </Link>
                       </td>

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 
 const ViewDetail = () => {
@@ -19,6 +20,9 @@ const ViewDetail = () => {
 
   return (
     <div className="w-11/12 mx-auto py-4">
+      <Helmet>
+        <title>Sport | View</title>
+      </Helmet>
       <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 max-w-auto mx-auto">
         <div className="flex flex-col md:flex-row">
           {/* Image Section */}

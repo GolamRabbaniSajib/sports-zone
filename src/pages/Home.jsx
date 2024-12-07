@@ -2,11 +2,15 @@ import { useLoaderData } from "react-router-dom";
 import ActiveSlider from "../components/ActiveSlider";
 import ItemCard from "../components/ItemCard";
 import { Bounce, Flip, Slide } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const items = useLoaderData();
   return (
     <div className="w-11/12 mx-auto">
+      <Helmet>
+        <title>Sport | Home</title>
+      </Helmet>
       {/* slider */}
       <div>
         <ActiveSlider></ActiveSlider>
@@ -128,8 +132,6 @@ const Home = () => {
         <section>
           <div className="w-11/12 mx-auto min-h-screen my-4 py-4">
             <div
-              data-aos="fade-up"
-              data-aos-anchor-placement="center-center"
               className="py-4 space-y-2"
             >
               <h1 className="text-4xl font-semibold text-center">
@@ -140,8 +142,6 @@ const Home = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 py-5">
               <div
-                data-aos="fade-up"
-                data-aos-anchor-placement="center-center"
                 className="max-w-sm mx-auto bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden"
               >
                 <div className="p-6 flex flex-col items-center">
@@ -174,8 +174,6 @@ const Home = () => {
               </div>
 
               <div
-                data-aos="fade-up"
-                data-aos-anchor-placement="center-center"
                 className="max-w-sm mx-auto bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden"
               >
                 <div className="p-6 flex flex-col items-center">
@@ -209,8 +207,6 @@ const Home = () => {
                 </div>
               </div>
               <div
-                data-aos="fade-up"
-                data-aos-anchor-placement="center-center"
                 className="max-w-sm mx-auto bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden"
               >
                 <div className="p-6 flex flex-col items-center">

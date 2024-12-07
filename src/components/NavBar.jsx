@@ -38,8 +38,8 @@ const NavBar = () => {
   );
   return (
     <div className="bg-cyan-300">
-      <div className="navbar w-11/12 mx-auto">
-        <div className="navbar-start">
+      <div className="navbar justify-between">
+        <div>
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
@@ -66,10 +66,10 @@ const NavBar = () => {
           </div>
           <a className="btn btn-ghost font-semibold text-xl">Sports Zone</a>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className=" hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end space-x-3">
+        <div className=" md:space-x-3">
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
             <input
@@ -124,14 +124,14 @@ const NavBar = () => {
             {user && user.email ? (
               <button
                 onClick={logOut}
-                className="bg-red-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-red-500/50"
+                className="btn bg-red-500 shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:bg-red-500 hover:shadow-red-500/50"
               >
                 {" "}
                 LogOut
               </button>
             ) : (
               <Link to="/auth/login">
-                <button className="bg-blue-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
+                <button className="bg-blue-500 btn hover:bg-blue-500 shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
                   Login
                 </button>
               </Link>

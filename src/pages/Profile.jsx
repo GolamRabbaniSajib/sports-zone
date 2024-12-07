@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
     const {user} = useContext(AuthContext);
   return (
     <div className="w-11/12 mx-auto flex justify-center items-center min-h-screen">
+      <Helmet>
+        <title>Sport | Profile</title>
+      </Helmet>
       <div className="card card-compact bg-base-100 w-96 h-96 shadow-xl">
         <figure>
           <img

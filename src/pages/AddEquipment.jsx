@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 import { Fade } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
 
 const AddEquipment = () => {
   const { user } = useContext(AuthContext);
@@ -33,7 +34,7 @@ const AddEquipment = () => {
       processingTime,
       stockStatus,
     };
-    fetch("http://localhost:5000/items", {
+    fetch("https://sport-equipment-server-six.vercel.app/items", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -54,6 +55,9 @@ const AddEquipment = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Sport | Add Equipment</title>
+      </Helmet>
       <Fade>
         <div className="bg-gray-100 min-h-screen flex items-center justify-center px-4 py-4">
           <form
