@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const AllEquipments = () => {
   const items = useLoaderData();
+  const [sorts, setSorts] = useState(items);
+  const handleSort = () => {
+    const sortedItems = [...sorts].sort(
+      (a, b) => parseFloat(b.price) - parseFloat(a.price)
+    );
+    setSorts(sortedItems);
+  };
   return (
     <div>
       <h1 className="text-3xl font-semibold text-center py-10">
@@ -12,7 +20,7 @@ const AllEquipments = () => {
           <button className="bg-green-500 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-green-500/50 hover:bg-green-500 w-full md:mr-8">
             Add More
           </button>
-          <button className="bg-blue-300 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 hover:bg-blue-300 w-full">
+          <button onClick={handleSort} className="bg-blue-300 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 hover:bg-blue-300 w-full">
             Sort By Price
           </button>
         </div>
@@ -33,7 +41,7 @@ const AllEquipments = () => {
             </thead>
             {/* Table Body */}
             <tbody>
-              {items.map((item, idx) => (
+              {sorts.map((item, idx) => (
                 <tr
                   key={idx}
                   className="hover:bg-gray-100 border-t border-gray-200"

@@ -15,7 +15,7 @@ const ActiveSlider = () => {
   return (
     <div className="w-11/12 mx-auto py-10">
       <div className="py-9">
-        <h1 className="text-3xl font-bold text-center"><span className="text-blue-400">Top</span> Instructor</h1>
+        <h1 className="text-3xl font-bold text-center"><span className="text-blue-400">Top</span> Buyer</h1>
       </div>
       <Slider {...settings}>
         <div className="hero bg-base-200">
