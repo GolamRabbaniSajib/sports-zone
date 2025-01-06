@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { Tooltip } from "react-tooltip";
+import logo from "../assets/Red and yellow Sports Store Logo.png";
 
 const NavBar = () => {
   const [theme, setThem] = useState(
@@ -29,16 +30,27 @@ const NavBar = () => {
         <NavLink to={"/all"}>All Sports Equipment</NavLink>
       </li>
       <li>
-        <NavLink to={"/addEquip"}>Add Equipment</NavLink>
+        {user ? (
+          <NavLink to={"/addEquip"}>Add Equipment</NavLink>
+        ) : (
+          <NavLink to={"/aboutUs"}>About Us</NavLink>
+        )}
       </li>
       <li>
-        <NavLink to={"/myEquip"}>My Equipment List</NavLink>
+        {user ? (
+          <NavLink to={"/myEquip"}>My Equipment List</NavLink>
+        ) : (
+          <NavLink to={"/contract"}>Contract</NavLink>
+        )}
+      </li>
+      <li>
+        <NavLink to={"/support"}>Support</NavLink>
       </li>
     </>
   );
   return (
-    <div className="bg-cyan-300">
-      <div className="navbar justify-between">
+    <div className="bg-cyan-300 fixed  z-20 w-full">
+      <div className="navbar justify-between items-center container md:w-11/12 mx-auto text-black">
         <div>
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -64,12 +76,14 @@ const NavBar = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost font-semibold text-xl">Sports Zone</a>
+          <Link to={"/"} className="rounded-full font-semibold text-xl">
+            <img className="w-12 rounded-full" src={logo} alt="" />
+          </Link>
         </div>
         <div className=" hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className=" md:space-x-3">
+        <div className="space-x-2 items-center flex md:space-x-6">
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
             <input
@@ -108,7 +122,7 @@ const NavBar = () => {
                 >
                   <div className="w-10 rounded-full">
                     <img
-                    className="rounded-full"
+                      className="rounded-full"
                       alt="sajib"
                       src={`${user?.photoURL}`}
                     />

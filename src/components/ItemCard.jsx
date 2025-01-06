@@ -1,12 +1,15 @@
 import { Zoom } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
+import { Rating } from "@smastrom/react-rating";
+
+import "@smastrom/react-rating/style.css";
 
 const ItemCard = ({ item }) => {
   const { _id, photo, name, categoryName, price, rating } = item;
   return (
     <div>
       <Zoom>
-        <div className="group bg-gradient-to-r from-blue-400 to-teal-400 p-4 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+        <div className=" group bg-gradient-to-r from-blue-400 to-teal-400 p-4 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
           {/* Image */}
           <div className="overflow-hidden rounded-md">
             <img
@@ -17,30 +20,24 @@ const ItemCard = ({ item }) => {
           </div>
 
           {/* Content */}
-          <div className="mt-4 text-white">
+          <div className="mt-2 text-white">
             {/* Name */}
-            <h2 className="text-lg font-bold grid grid-cols-2">
-              <p className="w-1/2">Name:</p>
-              <p>{name}</p>
-            </h2>
-            {/* Category */}
-            <h1 className="text-sm text-indigo-100 grid grid-cols-2">
-              <p className="w-1/2">Category:</p>
-              <p>{categoryName}</p>
-            </h1>
-            {/* Price */}
-            <h1 className="mt-2 text-xl font-semibold grid grid-cols-2">
-              <p className="w-1/2">Price:</p>
-              <p>${price}</p>
-            </h1>
+            <h2 className="text-3xl font-bold ">{name}</h2>
             {/* Rating */}
-            <div className="grid grid-cols-2 mt-2">
-              <p className="w-1/2">Rating</p>
-              <div className=" flex items-center">
-                <span className="text-yellow-300 font-bold mr-1">{rating}</span>
-                <span className="text-sm text-yellow-100">/ 5</span>
-              </div>
+            <div className="flex justify-center mt-2">
+              <Rating style={{ maxWidth: 180 }} value={rating} readOnly />
             </div>
+            <div className="flex justify-between items-center my-2">
+              {/* Price */}
+              <h1 className="text-xl font-semibold text-gray-500">{price}$</h1>
+              {/* Category */}
+              {categoryName ? (
+                <div className="badge badge-secondary">{categoryName}</div>
+              ) : (
+                <div className="badge badge-secondary">Uncategorised</div>
+              )}
+            </div>
+            
 
             {/* View Details Button */}
             <div className="mt-4">

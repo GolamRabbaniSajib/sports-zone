@@ -20,7 +20,7 @@ const Home = () => {
           <h1 className="text-3xl font-bold text-center text-green-400">
             €/£10 off your first order
           </h1>
-          <p className="text-center w-11/12 mx-auto">
+          <p className="text-center">
             Sign up to our newsletter and get €/£10 off your first order when
             you spend €/£100 or more! Plus, be the first to know about new
             product arrivals, exclusive offers, and the latest news from
@@ -116,21 +116,19 @@ const Home = () => {
         </section>
       </Slide>
       {/* items */}
-      <Flip>
         <section>
           <h1 className="text-3xl font-bold text-center pt-4 pb-16">
             <span className="text-blue-500">Pro</span>ducts
           </h1>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {items.map((item) => (
               <ItemCard key={item._id} item={item}></ItemCard>
             ))}
           </div>
         </section>
-      </Flip>
       <Slide>
         <section>
-          <div className="w-11/12 mx-auto min-h-screen my-4 py-4">
+          <div className=" min-h-screen my-4 py-4">
             <div
               className="py-4 space-y-2"
             >
@@ -142,7 +140,7 @@ const Home = () => {
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 py-5">
               <div
-                className="max-w-sm mx-auto bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden"
+                className="max-w-sm mx-auto border border-gray-200 rounded-xl shadow-md overflow-hidden"
               >
                 <div className="p-6 flex flex-col items-center">
                   <img
@@ -152,17 +150,17 @@ const Home = () => {
                   />
 
                   <div className="text-center mt-4">
-                    <h2 className="text-lg font-semibold text-gray-800">
+                    <h2 className="text-lg font-semibold ">
                       Frances Wagner
                     </h2>
-                    <p className="text-sm text-gray-500">Member</p>
+                    <p className="text-sm ">Member</p>
                   </div>
 
                   <div className="text-blue-500 text-4xl mt-4">
                     <span>“</span>
                   </div>
 
-                  <p className="text-gray-600 mt-2 px-4 text-center">
+                  <p className=" mt-2 px-4 text-center">
                     The career website offers a user-friendly interface with
                     comprehensive resources for job seekers. The search
                     functionality is intuitive, facilitating easy access to
@@ -174,7 +172,7 @@ const Home = () => {
               </div>
 
               <div
-                className="max-w-sm mx-auto bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden"
+                className="max-w-sm mx-auto border border-gray-200 rounded-xl shadow-md overflow-hidden"
               >
                 <div className="p-6 flex flex-col items-center">
                   <img
@@ -184,17 +182,17 @@ const Home = () => {
                   />
 
                   <div className="text-center mt-4">
-                    <h2 className="text-lg font-semibold text-gray-800">
+                    <h2 className="text-lg font-semibold ">
                       Becky Lance
                     </h2>
-                    <p className="text-sm text-gray-500">Member</p>
+                    <p className="text-sm ">Member</p>
                   </div>
 
                   <div className="text-blue-500 text-4xl mt-4">
                     <span>“</span>
                   </div>
 
-                  <p className="text-gray-600 mt-2 px-4 text-center">
+                  <p className=" mt-2 px-4 text-center">
                     Fantastic platform! The user interface is clean and
                     straightforward, making it easy to search and apply for
                     jobs. I particularly appreciate the personalized
@@ -207,7 +205,7 @@ const Home = () => {
                 </div>
               </div>
               <div
-                className="max-w-sm mx-auto bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden"
+                className="max-w-sm mx-auto  border border-gray-200 rounded-xl shadow-md overflow-hidden"
               >
                 <div className="p-6 flex flex-col items-center">
                   <img
@@ -217,17 +215,17 @@ const Home = () => {
                   />
 
                   <div className="text-center mt-4">
-                    <h2 className="text-lg font-semibold text-gray-800">
+                    <h2 className="text-lg font-semibold ">
                       Harry
                     </h2>
-                    <p className="text-sm text-gray-500">Member</p>
+                    <p className="text-sm ">Member</p>
                   </div>
 
                   <div className="text-blue-500 text-4xl mt-4">
                     <span>“</span>
                   </div>
 
-                  <p className="text-gray-600 mt-2 px-4 text-center">
+                  <p className=" mt-2 px-4 text-center">
                     This career website has exceeded my expectations! It’s not
                     just about job listings—the career advice articles and tips
                     for improving your resume have been invaluable. The advanced

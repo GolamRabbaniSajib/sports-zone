@@ -1,18 +1,18 @@
 const Footer = () => {
   return (
-    <div className="bg-cyan-100 mt-28">
+    <div className="bg-cyan-300 text-black mt-28">
       <footer className="footer footer-center w-11/12 mx-auto text-base-content rounded p-10">
       <div>
-        <h1 className="text-3xl text-center pt-4 py-2 font-bold">Sports Zone</h1>
+        <h1 className="text-3xl text-center pt-4 py-2 font-bold text-black">Sports Zone</h1>
       </div>
         <nav className="grid grid-flow-col gap-4">
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <a className="link link-hover text-black">About us</a>
+          <a className="link link-hover text-black">Contact</a>
+          <a className="link link-hover text-black">Jobs</a>
+          <a className="link link-hover text-black">Press kit</a>
         </nav>
         <nav>
-          <div className="grid grid-flow-col gap-4">
+          <div className="grid grid-flow-col gap-4 text-black">
             <a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ const Footer = () => {
           </div>
         </nav>
         <aside>
-          <p>
+          <p className="text-black">
             Copyright © {new Date().getFullYear()} - All right reserved by Sports Zone
           </p>
         </aside>
