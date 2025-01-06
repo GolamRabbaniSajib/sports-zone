@@ -5,7 +5,7 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 
 const ItemCard = ({ item }) => {
-  const { _id, photo, name, categoryName, price, rating } = item;
+  const { _id, photo, name, categoryName, price, rating, description } = item;
   return (
     <div>
       <Zoom>
@@ -23,22 +23,8 @@ const ItemCard = ({ item }) => {
           <div className="mt-2 text-white">
             {/* Name */}
             <h2 className="text-3xl font-bold ">{name}</h2>
-            {/* Rating */}
-            <div className="flex justify-center mt-2">
-              <Rating style={{ maxWidth: 180 }} value={rating} readOnly />
-            </div>
-            <div className="flex justify-between items-center my-2">
-              {/* Price */}
-              <h1 className="text-xl font-semibold text-gray-500">{price}$</h1>
-              {/* Category */}
-              {categoryName ? (
-                <div className="badge badge-secondary">{categoryName}</div>
-              ) : (
-                <div className="badge badge-secondary">Uncategorised</div>
-              )}
-            </div>
-            
-
+            {/* description */}
+            <div className="mt-2">{description.substring(0, 60)}...</div>
             {/* View Details Button */}
             <div className="mt-4">
               <Link to={`viewDetail/${_id}`}>

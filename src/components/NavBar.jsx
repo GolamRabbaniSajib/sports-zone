@@ -49,7 +49,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="bg-cyan-300 fixed  z-20 w-full">
+    <div className="bg-gradient-to-r from-blue-400 to-teal-400 fixed  z-20 w-full">
       <div className="navbar justify-between items-center container md:w-11/12 mx-auto text-black">
         <div>
           <div className="dropdown">

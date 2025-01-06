@@ -16,7 +16,7 @@ const Home = () => {
         <ActiveSlider></ActiveSlider>
       </div>
       <Bounce>
-        <section className="py-6 space-y-3">
+        <section className="pt-36 space-y-6">
           <h1 className="text-3xl font-bold text-center text-green-400">
             €/£10 off your first order
           </h1>
@@ -27,7 +27,7 @@ const Home = () => {
             AllSportStore. Discount not applicable on sale items or promotions.
           </p>
           <div className="flex justify-center items-center">
-            <button className="bg-blue-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
+            <button className="bg-gradient-to-r from-blue-400 to-teal-400  text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
               Join Now
             </button>
           </div>
@@ -35,9 +35,9 @@ const Home = () => {
       </Bounce>
       {/* category */}
       <Slide>
-        <section className="py-11">
+        <section className="pt-36">
           <h1 className="text-3xl font-bold text-center">
-            Product <span className="text-blue-500">Categories</span>
+            Product <span className="text-blue-500 pb-20">Categories</span>
           </h1>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
             <div className="card">
@@ -116,8 +116,8 @@ const Home = () => {
         </section>
       </Slide>
       {/* items */}
-        <section>
-          <h1 className="text-3xl font-bold text-center pt-4 pb-16">
+        <section className="pt-36">
+          <h1 className="text-3xl font-bold text-center pt-4 pb-20">
             <span className="text-blue-500">Pro</span>ducts
           </h1>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -127,12 +127,12 @@ const Home = () => {
           </div>
         </section>
       <Slide>
-        <section>
+        <section className="pt-36">
           <div className=" min-h-screen my-4 py-4">
             <div
-              className="py-4 space-y-2"
+              className=""
             >
-              <h1 className="text-4xl font-semibold text-center">
+              <h1 className="text-4xl pb-20 font-semibold text-center">
                 {" "}
                 <span className="text-blue-500">Our </span>
                 User <span className="text-blue-500">Reviews</span>

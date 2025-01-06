@@ -19,7 +19,7 @@ const ViewDetail = () => {
   } = item;
 
   return (
-    <div className="w-11/12 mx-auto py-4">
+    <div className="w-11/12 mx-auto pt-36 pb-4">
       <Helmet>
         <title>Sport | View</title>
       </Helmet>

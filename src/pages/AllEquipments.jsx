@@ -22,7 +22,7 @@ const AllEquipments = () => {
       </Helmet>
       <Flip>
         <div>
-          <h1 className="text-3xl font-semibold text-center py-10">
+          <h1 className="text-3xl font-semibold text-center pt-24 pb-10">
             All Sports <span className="text-blue-500">Equipments</span>
           </h1>
           <div className="w-11/12 mx-auto flex justify-start pt-10">

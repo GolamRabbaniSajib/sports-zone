@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { signInWithPopup } from "firebase/auth";
 import { Bounce } from "react-awesome-reveal";
 import { Helmet } from "react-helmet-async";
+import loginLog from "../assets/Secure login.gif";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -60,14 +61,17 @@ const Login = () => {
       });
   };
   return (
-    <div>
+    <div className="pt-36 pb-12">
       <Helmet>
         <title>Sport | Login</title>
       </Helmet>
       <Bounce>
-        <div className="flex justify-center items-center min-h-screen">
+        <div className="md:flex justify-center items-center min-h-screen">
+          <div className="md:mr-4">
+            <img className="min-h-screen rounded-md" src={loginLog} alt="" />
+          </div>
           <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl p-6 border">
-            <h1 className="font-semibold text-4xl text-center p-4 bg-blue-200 rounded-lg shadow-lg hover:shadow-indigo-500/50">
+            <h1 className="font-semibold text-2xl md:text-4xl text-center p-4 bg-blue-200 rounded-lg shadow-lg hover:shadow-indigo-500/50">
               Login your account
             </h1>
             <form onSubmit={handleLogin} className="card-body">
