@@ -24,7 +24,7 @@ const ItemCard = ({ item }) => {
             {/* Name */}
             <h2 className="text-3xl font-bold ">{name}</h2>
             {/* description */}
-            <div className="mt-2">{description.substring(0, 60)}...</div>
+            <div className="mt-2">{description.substring(0, 40)}...</div>
             {/* View Details Button */}
             <div className="mt-4">
               <Link to={`viewDetail/${_id}`}>
