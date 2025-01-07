@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div className="bg-gradient-to-r from-blue-400 to-teal-400  text-black mt-28">
@@ -6,10 +8,10 @@ const Footer = () => {
         <h1 className="text-3xl text-center pt-4 py-2 font-bold text-black">Sports Zone</h1>
       </div>
         <nav className="grid grid-flow-col gap-4">
-          <a className="link link-hover text-black">About us</a>
-          <a className="link link-hover text-black">Contact</a>
-          <a className="link link-hover text-black">Jobs</a>
-          <a className="link link-hover text-black">Press kit</a>
+          <Link to={'/aboutUs'} className="link link-hover text-black">About us</Link>
+          <Link to={'/contract'} className="link link-hover text-black">Contact</Link>
+          <Link to={'/careers'} className="link link-hover text-black">Jobs</Link>
+          <Link to={'/support'} className="link link-hover text-black">Support</Link>
         </nav>
         <nav>
           <div className="grid grid-flow-col gap-4 text-black">

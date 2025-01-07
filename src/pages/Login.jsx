@@ -119,7 +119,7 @@ const Login = () => {
                 </Link>
               </label>
               <div className="form-control mt-3">
-                <button className="bg-blue-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
+                <button className="bg-gradient-to-r from-blue-400 to-teal-400  text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
                   Login
                 </button>
               </div>

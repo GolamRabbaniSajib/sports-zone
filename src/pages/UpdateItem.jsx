@@ -70,17 +70,17 @@ const UpdateItem = () => {
       });
   };
   return (
-    <div>
-        <Helmet>
-            <title>Sport | Update Item</title>
-        </Helmet>
+    <div className="pt-36">
+      <Helmet>
+        <title>Sport | Update Item</title>
+      </Helmet>
       <Zoom>
-        <div className="bg-gray-100 min-h-screen flex items-center justify-center px-4 py-4">
+        <div className=" min-h-screen flex items-center justify-center px-4 pb-4">
           <form
             onSubmit={handleUpdate}
-            className="bg-white shadow-lg rounded-lg p-8 w-full max-w-4xl space-y-6"
+            className="border shadow-lg rounded-lg p-8 w-full max-w-4xl space-y-6"
           >
-            <h2 className="text-3xl font-bold text-gray-800 text-center">
+            <h2 className="text-3xl pb-12 font-bold  text-center">
               Update Your Item Data
             </h2>
 
@@ -88,10 +88,7 @@ const UpdateItem = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Image Upload */}
               <div>
-                <label
-                  htmlFor="image"
-                  className="block text-gray-700 font-medium mb-2"
-                >
+                <label htmlFor="image" className="block  font-medium mb-2">
                   Image
                 </label>
                 <input
@@ -105,10 +102,7 @@ const UpdateItem = () => {
 
               {/* Item Name */}
               <div>
-                <label
-                  htmlFor="itemName"
-                  className="block text-gray-700 font-medium mb-2"
-                >
+                <label htmlFor="itemName" className="block font-medium mb-2">
                   Item Name
                 </label>
                 <input
@@ -124,7 +118,7 @@ const UpdateItem = () => {
               <div>
                 <label
                   htmlFor="categoryName"
-                  className="block text-gray-700 font-medium mb-2"
+                  className="block font-medium mb-2"
                 >
                   Category Name
                 </label>
@@ -139,10 +133,7 @@ const UpdateItem = () => {
 
               {/* Price */}
               <div>
-                <label
-                  htmlFor="price"
-                  className="block text-gray-700 font-medium mb-2"
-                >
+                <label htmlFor="price" className="block font-medium mb-2">
                   Price
                 </label>
                 <input
@@ -156,10 +147,7 @@ const UpdateItem = () => {
 
               {/* Description */}
               <div className="md:col-span-2">
-                <label
-                  htmlFor="description"
-                  className="block text-gray-700 font-medium mb-2"
-                >
+                <label htmlFor="description" className="block font-medium mb-2">
                   Description
                 </label>
                 <textarea
@@ -172,10 +160,7 @@ const UpdateItem = () => {
 
               {/* Rating */}
               <div>
-                <label
-                  htmlFor="rating"
-                  className="block text-gray-700 font-medium mb-2"
-                >
+                <label htmlFor="rating" className="block font-medium mb-2">
                   Rating
                 </label>
                 <input
@@ -193,7 +178,7 @@ const UpdateItem = () => {
               <div>
                 <label
                   htmlFor="customization"
-                  className="block text-gray-700 font-medium mb-2"
+                  className="block font-medium mb-2"
                 >
                   Customization
                 </label>
@@ -210,7 +195,7 @@ const UpdateItem = () => {
               <div>
                 <label
                   htmlFor="processingTime"
-                  className="block text-gray-700 font-medium mb-2"
+                  className="block font-medium mb-2"
                 >
                   Processing Time
                 </label>
@@ -225,10 +210,7 @@ const UpdateItem = () => {
 
               {/* Stock Status */}
               <div>
-                <label
-                  htmlFor="stockStatus"
-                  className="block text-gray-700 font-medium mb-2"
-                >
+                <label htmlFor="stockStatus" className="block font-medium mb-2">
                   Stock Status
                 </label>
                 <input
@@ -242,10 +224,7 @@ const UpdateItem = () => {
 
               {/* User Email */}
               <div>
-                <label
-                  htmlFor="userEmail"
-                  className="block text-gray-700 font-medium mb-2"
-                >
+                <label htmlFor="userEmail" className="block font-medium mb-2">
                   User Email
                 </label>
                 <input
@@ -259,10 +238,7 @@ const UpdateItem = () => {
 
               {/* User Name */}
               <div>
-                <label
-                  htmlFor="userName"
-                  className="block text-gray-700 font-medium mb-2"
-                >
+                <label htmlFor="userName" className="block  font-medium mb-2">
                   User Name
                 </label>
                 <input
@@ -277,7 +253,7 @@ const UpdateItem = () => {
 
             {/* Submit Button */}
             <div className="flex justify-center">
-              <button className="bg-blue-500 text-white w-full px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition transform duration-300 hover:scale-105 active:scale-95">
+              <button className="bg-gradient-to-r from-blue-400 to-teal-400 text-white w-full px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition transform duration-300 hover:scale-105 active:scale-95">
                 Update Item
               </button>
             </div>

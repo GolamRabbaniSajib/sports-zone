@@ -17,7 +17,10 @@ const Home = () => {
       </div>
       <Bounce>
         <section className="pt-36 space-y-6">
-          <h1 className="text-3xl font-bold text-center text-green-400">
+          <h1 className="text-center text-5xl mb-16 font-bold text-transparent bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text">
+            Offer
+          </h1>
+          <h1 className="text-xl font-semibold text-center text-green-400">
             €/£10 off your first order
           </h1>
           <p className="text-center">
@@ -36,8 +39,8 @@ const Home = () => {
       {/* category */}
       <Slide>
         <section className="pt-36">
-          <h1 className="text-3xl font-bold text-center">
-            Product <span className="text-blue-500 pb-20">Categories</span>
+          <h1 className="text-3xl font-bold text-center text-transparent bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text mb-16">
+            Product <span className=" pb-20">Categories</span>
           </h1>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
             <div className="card">
@@ -116,32 +119,28 @@ const Home = () => {
         </section>
       </Slide>
       {/* items */}
-        <section className="pt-36">
-          <h1 className="text-3xl font-bold text-center pt-4 pb-20">
-            <span className="text-blue-500">Pro</span>ducts
-          </h1>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {items.map((item) => (
-              <ItemCard key={item._id} item={item}></ItemCard>
-            ))}
-          </div>
-        </section>
+      <section className="pt-36">
+        <h1 className="text-3xl font-bold text-center pt-4 mb-16 text-transparent bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text">
+          <span className="">Latest </span>Products
+        </h1>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {items.map((item) => (
+            <ItemCard key={item._id} item={item}></ItemCard>
+          ))}
+        </div>
+      </section>
       <Slide>
         <section className="pt-36">
           <div className=" min-h-screen my-4 py-4">
-            <div
-              className=""
-            >
-              <h1 className="text-4xl pb-20 font-semibold text-center">
+            <div className="">
+              <h1 className="text-4xl pb-20 font-semibold text-center text-transparent bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text">
                 {" "}
-                <span className="text-blue-500">Our </span>
-                User <span className="text-blue-500">Reviews</span>
+                <span className="">Our </span>
+                User <span className="">Reviews</span>
               </h1>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 py-5">
-              <div
-                className="max-w-sm mx-auto border border-gray-200 rounded-xl shadow-md overflow-hidden"
-              >
+              <div className="max-w-sm mx-auto border border-gray-200 rounded-xl shadow-md overflow-hidden">
                 <div className="p-6 flex flex-col items-center">
                   <img
                     src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -150,9 +149,7 @@ const Home = () => {
                   />
 
                   <div className="text-center mt-4">
-                    <h2 className="text-lg font-semibold ">
-                      Frances Wagner
-                    </h2>
+                    <h2 className="text-lg font-semibold ">Frances Wagner</h2>
                     <p className="text-sm ">Member</p>
                   </div>
 
@@ -171,9 +168,7 @@ const Home = () => {
                 </div>
               </div>
 
-              <div
-                className="max-w-sm mx-auto border border-gray-200 rounded-xl shadow-md overflow-hidden"
-              >
+              <div className="max-w-sm mx-auto border border-gray-200 rounded-xl shadow-md overflow-hidden">
                 <div className="p-6 flex flex-col items-center">
                   <img
                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -182,9 +177,7 @@ const Home = () => {
                   />
 
                   <div className="text-center mt-4">
-                    <h2 className="text-lg font-semibold ">
-                      Becky Lance
-                    </h2>
+                    <h2 className="text-lg font-semibold ">Becky Lance</h2>
                     <p className="text-sm ">Member</p>
                   </div>
 
@@ -204,9 +197,7 @@ const Home = () => {
                   </p>
                 </div>
               </div>
-              <div
-                className="max-w-sm mx-auto  border border-gray-200 rounded-xl shadow-md overflow-hidden"
-              >
+              <div className="max-w-sm mx-auto  border border-gray-200 rounded-xl shadow-md overflow-hidden">
                 <div className="p-6 flex flex-col items-center">
                   <img
                     src="https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -215,9 +206,7 @@ const Home = () => {
                   />
 
                   <div className="text-center mt-4">
-                    <h2 className="text-lg font-semibold ">
-                      Harry
-                    </h2>
+                    <h2 className="text-lg font-semibold ">Harry</h2>
                     <p className="text-sm ">Member</p>
                   </div>
 

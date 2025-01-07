@@ -49,72 +49,61 @@ const MyEquipments = () => {
     });
   };
   return (
-    <div className="w-11/12 mx-auto pt-16">
-      <Helmet>
-        <title>Sport | My Equipments</title>
-      </Helmet>
-      <div className="py-8 space-y-4">
-        <h1 className="text-4xl font-semibold text-center">My Equipments</h1>
-        <div className="flex justify-center items-center">
-          <Link to={'/addEquip'}>
-            <button className="bg-blue-500 text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 flex items-center justify-around"><IoIosAddCircle /> Add One</button>
-          </Link>
+    <div className="pt-36">
+      <div className="w-11/12 mx-auto mb-20">
+        <h1 className="text-3xl font-semibold mb-6 text-center">
+          Product Table
+        </h1>
+        <div className="overflow-x-auto">
+          <table className="table-auto w-full border-collapse border border-gray-300">
+            <thead>
+              <tr className="bg-gray-100 text-left">
+                <th className="border border-gray-300 px-4 py-2">Photo</th>
+                <th className="border border-gray-300 px-4 py-2">Name</th>
+                <th className="border border-gray-300 px-4 py-2">Price</th>
+                <th className="border border-gray-300 px-4 py-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {item.map((product) => (
+                <tr key={product._id} className="hover:bg-gray-50">
+                  <td className="border border-gray-300 px-4 py-2">
+                    <img
+                      src={product.photo}
+                      alt={product.name}
+                      className="w-16 h-16 object-cover rounded-md"
+                    />
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    {product.name}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2">
+                    ${product.price}
+                  </td>
+                  <td className="border border-gray-300 px-4 py-2 flex space-x-2 justify-center">
+                    <Link to={`/viewDetail/${product._id}`}>
+                      <button className="bg-gradient-to-r from-blue-400 to-teal-400 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                        View
+                      </button>
+                    </Link>
+                    <Link to={`/updateItem/${product._id}`}>
+                      <button className="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600">
+                        Update
+                      </button>
+                    </Link>
+                    <button
+                      onClick={() => handleDelete(product._id)}
+                      className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-      <Slide>
-        <div className="grid gap-4 md:grid-cols-3">
-          {item.map((i) => (
-            <div
-              key={i._id}
-              className="max-w-sm rounded overflow-hidden shadow-lg bg-white border"
-            >
-              {/* Image */}
-              <img
-                className="w-full h-48 object-cover"
-                src={i.photo}
-                alt={i.name}
-              />
-
-              {/* Content */}
-              <div className="px-6 py-4">
-                {/* Name */}
-                <h2 className="font-bold text-xl mb-2">{i.name}</h2>
-                {/* Category */}
-                <p className="text-sm text-gray-600 mb-2">
-                  Category: {i.categoryName}
-                </p>
-                {/* Description */}
-                <p className="text-gray-700 text-base mb-4">{i.description}</p>
-                {/* Price */}
-                <p className="font-semibold text-lg text-gray-800">
-                  Price: ${i.price}
-                </p>
-              </div>
-
-              {/* Buttons */}
-              <div className="px-6 py-4 flex justify-between items-center space-x-2">
-                <Link to={`/viewDetail/${i._id}`}>
-                  <button className="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 transition">
-                    View
-                  </button>
-                </Link>
-
-                <Link to={`/updateItem/${i._id}`}>
-                  <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600 transition">
-                    Update
-                  </button>
-                </Link>
-                <button
-                  onClick={() => handleDelete(i._id)}
-                  className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-600 transition"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Slide>
     </div>
   );
 };

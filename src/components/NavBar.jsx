@@ -27,7 +27,11 @@ const NavBar = () => {
         <NavLink to={"/"}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={"/all"}>All Sports Equipment</NavLink>
+        {user ? (
+          <NavLink to={"/all"}>All Sports Equipment</NavLink>
+        ) : (
+          <NavLink to={"/careers"}>Careers</NavLink>
+        )}
       </li>
       <li>
         {user ? (

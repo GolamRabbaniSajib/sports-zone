@@ -13,6 +13,11 @@ import AllEquipments from "../pages/AllEquipments";
 import MyEquipments from "../pages/MyEquipments";
 import UpdateItem from "../pages/UpdateItem";
 import UserRouter from "./UserRouter";
+import AboutUs from "../pages/AboutUs";
+import Contract from "../pages/Contract";
+import Support from "../pages/Support";
+import FAQPage from "../pages/FAQPage";
+import CareersPage from "../pages/CareersPage";
 
 const router = createBrowserRouter([
   {
@@ -64,7 +69,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/all",
-        element: <AllEquipments></AllEquipments>,
+        element: (
+          <UserRouter>
+            <AllEquipments></AllEquipments>
+          </UserRouter>
+        ),
         loader: () =>
           fetch("https://sport-equipment-server-six.vercel.app/items"),
       },
@@ -76,6 +85,26 @@ const router = createBrowserRouter([
           </UserRouter>
         ),
       },
+      {
+        path: '/aboutUs',
+        element: <AboutUs></AboutUs>
+      },
+      {
+        path: '/contract',
+        element: <Contract></Contract>
+      },
+      {
+        path: '/support',
+        element: <Support></Support>
+      },
+      {
+        path: 'faq',
+        element: <FAQPage></FAQPage>
+      },
+      {
+        path: '/careers',
+        element: <CareersPage></CareersPage>
+      }
     ],
   },
   {

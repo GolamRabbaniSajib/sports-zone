@@ -33,10 +33,10 @@ const ActiveSlider = () => {
     slidesToScroll: 1,
   };
   return (
-    <div className="pt-20 space-y-6">
+    <div className="pt-20">
       <div className="py-9">
-        <h1 className="text-3xl font-bold text-center">
-          <span className="text-blue-400">Top</span> Seller
+        <h1 className="text-3xl font-bold text-center mb-16 text-transparent bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text">
+          <span className="">Top</span> Seller
         </h1>
       </div>
       <Slider {...settings}>

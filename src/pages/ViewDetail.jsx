@@ -23,10 +23,10 @@ const ViewDetail = () => {
       <Helmet>
         <title>Sport | View</title>
       </Helmet>
-      <div className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 max-w-auto mx-auto">
+      <div className="rounded-xl shadow-lg overflow-hidden border border-gray-200 max-w-auto mx-auto">
         <div className="flex flex-col md:flex-row">
           {/* Image Section */}
-          <div className="md:w-1/2 h-64 md:h-auto overflow-hidden">
+          <div className="md:w-1/2 h-64 md:h-auto md:border md:rounded-xl overflow-hidden md:mr-5">
             <img
               src={photo}
               alt={name}
@@ -34,13 +34,13 @@ const ViewDetail = () => {
             />
           </div>
           {/* Content Section */}
-          <div className="p-6 md:w-1/2">
+          <div className="p-6 md:w-1/2 md:border md:rounded-xl">
             {/* Name */}
-            <h2 className="text-2xl font-bold text-gray-800">{name}</h2>
+            <h2 className="text-2xl font-bold ">{name}</h2>
             {/* Email */}
-            <p className="text-sm text-gray-500">{email}</p>
+            <p className="text-sm ">{email}</p>
             {/* Category */}
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm ">
               <span className="font-semibold">Category:</span> {categoryName}
             </p>
             {/* Price */}
@@ -48,7 +48,7 @@ const ViewDetail = () => {
               ${price}
             </p>
             {/* Description */}
-            <p className="mt-2 text-gray-700">
+            <p className="mt-2 ">
               <span className="font-semibold">Description:</span> {description}
             </p>
             {/* Rating */}
@@ -56,12 +56,12 @@ const ViewDetail = () => {
               <span className="font-semibold">Rating:</span> {rating} / 5
             </p>
             {/* Customization */}
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2 ">
               <span className="font-semibold">Customization:</span>{" "}
               {customization}
             </p>
             {/* Processing Time */}
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2 ">
               <span className="font-semibold">Processing Time:</span>{" "}
               {processingTime}
             </p>
