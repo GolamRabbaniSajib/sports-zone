@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import ActiveSlider from "../components/ActiveSlider";
 import ItemCard from "../components/ItemCard";
 import { Bounce, Flip, Slide } from "react-awesome-reveal";
@@ -30,9 +30,11 @@ const Home = () => {
             AllSportStore. Discount not applicable on sale items or promotions.
           </p>
           <div className="flex justify-center items-center">
-            <button className="bg-gradient-to-r from-blue-400 to-teal-400  text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
-              Join Now
-            </button>
+            <Link to={"/login"}>
+              <button className="bg-gradient-to-r from-blue-400 to-teal-400  text-white font-medium py-3 px-8 rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50">
+                Join Now
+              </button>
+            </Link>
           </div>
         </section>
       </Bounce>
