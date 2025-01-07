@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import toast, { Toaster } from "react-hot-toast";
 
 const CareersPage = () => {
@@ -29,6 +30,9 @@ const CareersPage = () => {
 
   return (
     <div className="w-11/12 mx-auto pt-36 pb-6">
+      <Helmet>
+        <title>Sport || Careers</title>
+      </Helmet>
       <h1 className="text-4xl font-semibold text-center mb-8">Join Our Team</h1>
       <p className="text-center mb-12">
         Be part of a passionate and dynamic team at Sports Zone. Check out our

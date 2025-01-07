@@ -1,6 +1,11 @@
+import { Helmet } from "react-helmet-async";
+
 const Contract = () => {
   return (
     <div>
+      <Helmet>
+        <title>Sport || Contract</title>
+      </Helmet>
       <div className="w-11/12 mx-auto px-4 py-8">
         <h1 className="text-4xl font-semibold text-center pt-36 mb-6">
           Contract Agreement
@@ -60,11 +65,7 @@ const Contract = () => {
           </section>
         </div>
 
-        <div className="mt-8 text-center">
-          <button className="bg-gradient-to-r from-blue-400 to-teal-400   text-white px-6 py-2 rounded-lg hover:bg-blue-600">
-            Accept Terms
-          </button>
-        </div>
+        
       </div>
     </div>
   );

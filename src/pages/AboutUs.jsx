@@ -1,12 +1,14 @@
-import logoImg from '../assets/Red and yellow Sports Store Logo.png'
+import { Helmet } from "react-helmet-async";
+import logoImg from "../assets/Red and yellow Sports Store Logo.png";
 const AboutUs = () => {
   return (
     <div>
+      <Helmet>
+        <title>Sport || About Us</title>
+      </Helmet>
       <div className=" min-h-screen pt-36 pb-10">
         <div className="max-w-6xl mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center  mb-6">
-            About Us
-          </h1>
+          <h1 className="text-4xl font-bold text-center  mb-6">About Us</h1>
           <div className="flex flex-col items-center md:flex-row md:items-start md:space-x-8">
             <div className="w-full md:w-1/3 mb-6 md:mb-0">
               <img

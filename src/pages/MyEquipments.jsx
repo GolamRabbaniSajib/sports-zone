@@ -50,6 +50,9 @@ const MyEquipments = () => {
   };
   return (
     <div className="pt-36">
+      <Helmet>
+        <title>Sport || My Equipments</title>
+      </Helmet>
       <div className="w-11/12 mx-auto mb-20">
         <h1 className="text-3xl font-semibold mb-6 text-center">
           Product Table

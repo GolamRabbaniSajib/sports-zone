@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const UpdateProfile = () => {
   const { user, updateUserProfile, setUser } = useContext(AuthContext);
@@ -42,6 +43,9 @@ const UpdateProfile = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Sport || Update Profile</title>
+      </Helmet>
       <div className="w-11/12 mx-auto min-h-screen flex justify-center items-center py-6">
         <div className="card bg-base-100 shadow-xl shadow-blue-500/50 px-4">
           <div className="flex justify-center items-center my-4">

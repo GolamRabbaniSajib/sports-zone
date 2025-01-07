@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -39,6 +40,9 @@ const Support = () => {
 
   return (
     <div className="pt-36">
+      <Helmet>
+        <title>Sport || Support</title>
+      </Helmet>
       <div className="w-11/12 max-w-4xl mx-auto px-6 py-12 border shadow-xl rounded-lg">
         <h1 className="text-4xl font-semibold text-center  mb-8">Support</h1>
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const FAQPage = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -39,6 +40,9 @@ const FAQPage = () => {
 
   return (
     <div className="pt-32">
+      <Helmet>
+        <title>Sport || FAQ</title>
+      </Helmet>
       <div className="w-11/12 mx-auto px-6 py-12 shadow-xl border rounded-lg">
         <h1 className="text-4xl font-semibold text-center mb-8">
           Frequently Asked Questions
@@ -54,9 +58,7 @@ const FAQPage = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full flex justify-between items-center px-6 py-4 text-left  hover:bg-gray-50 rounded-lg focus:outline-none"
               >
-                <span className="text-lg font-medium ">
-                  {faq.question}
-                </span>
+                <span className="text-lg font-medium ">{faq.question}</span>
                 <span
                   className={`transform transition-transform duration-300 ${
                     openIndex === index ? "rotate-180" : "rotate-0"
