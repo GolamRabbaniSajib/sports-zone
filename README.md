@@ -8,7 +8,7 @@ Sports Zone is a leading retailer specializing in high-quality sporting equipmen
 
 
 
-## Main Development features
+# Main Development features
 
 react
 <br>
@@ -16,9 +16,9 @@ FireBase
 <br>
 Mongodb
 
-## 5 key features of the project
+# 5 key features of the project
 
-features are:
+### features are:
 
 - You can register and login.
 - If you click on the View Detail button you will show card details dynamically.
@@ -30,9 +30,9 @@ features are:
 - View Detail page only for user if you visit details page you must have an account.
 - You can login easily google account.
 
-## All Development features
+# All Development features
 
-# Dependencies
+## Dependencies
 
 - @emotion/react : ^11.13.5
 - @smastrom/react-rating : ^1.5.0
@@ -53,7 +53,7 @@ features are:
 - sort-by : ^1.2.0
 - sweetalert2 : ^11.14.5
 
-# Dev Dependencies
+## Dev Dependencies
 
 - @eslint/js : ^9.15.0
 - @types/react : ^18.3.12
@@ -70,9 +70,9 @@ features are:
 - tailwindcss : ^3.4.15
 - vite : ^6.0.1
 
-### Installation
+# Installation
 
-# gitHub Clone
+### gitHub Clone
 
 Copy this command and paste your windows CDM
 
