@@ -4,7 +4,7 @@ Sports Zone is a leading retailer specializing in high-quality sporting equipmen
 
 ## Project Image
 
-[<img src="https://i.ibb.co.com/C95XZYx/Screenshot-2025-01-08-102413.png" width="800" />] ( https://sports-equipment-site.web.app/ )
+<img src="https://i.ibb.co.com/C95XZYx/Screenshot-2025-01-08-102413.png" width="800" />
 
 
 
@@ -84,6 +84,10 @@ git clone https://github.com/sbsajibsx/sports-zone.git
 <br>
 
 Type `npm i`
+
+<br>
+
+Add your `.env`
 
 <br>
 
