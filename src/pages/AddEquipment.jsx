@@ -3,237 +3,256 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../provider/AuthProvider";
 import { Fade } from "react-awesome-reveal";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
+import {
+  FiImage,
+  FiTag,
+  FiBox,
+  FiDollarSign,
+  FiAlignLeft,
+  FiStar,
+  FiSettings,
+  FiClock,
+  FiDatabase,
+  FiMail,
+  FiUser,
+  FiPlusCircle,
+} from "react-icons/fi";
+
+const inputClasses =
+  "w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300";
 
 const AddEquipment = () => {
   const { user } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // get form data
     const form = new FormData(e.target);
-    const photo = form.get("photo");
-    const name = form.get("name");
-    const email = form.get("email");
-    const userName = form.get("userName");
-    const categoryName = form.get("categoryName");
-    const price = form.get("price");
-    const description = form.get("description");
-    const rating = form.get("rating");
-    const customization = form.get("customization");
-    const processingTime = form.get("processingTime");
-    const stockStatus = form.get("stockStatus");
-    const newItem = {
-      photo,
-      name,
-      email,
-      userName,
-      categoryName,
-      price,
-      description,
-      rating,
-      customization,
-      processingTime,
-      stockStatus,
-    };
+    const newItem = Object.fromEntries(form.entries());
+
     fetch("https://sport-equipment-server-six.vercel.app/items", {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
+      headers: { "content-type": "application/json" },
       body: JSON.stringify(newItem),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
           Swal.fire({
-            title: "success!",
+            title: "Success!",
             text: "Item added successfully",
             icon: "success",
-            confirmButtonText: "ok",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#22c55e", // Tailwind green-500
           });
+          e.target.reset();
         }
+      })
+      .catch(() => {
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to add item. Please try again.",
+          icon: "error",
+          confirmButtonText: "Close",
+          confirmButtonColor: "#ef4444", // Tailwind red-500
+        });
       });
   };
+
   return (
-    <div>
+    <>
       <Helmet>
         <title>Sport | Add Equipment</title>
       </Helmet>
-      <Fade>
-        <div className=" min-h-screen pt-36 flex items-center justify-center px-4 py-4">
-          <form
-            onSubmit={handleSubmit}
-            className=" border shadow-lg rounded-lg p-8 w-full max-w-4xl space-y-6"
-          >
-            <h2 className="text-3xl font-bold text-center">Add New Item</h2>
 
-            {/* Form Grid */}
+      <Fade>
+        <div className="min-h-screen pt-28 px-4 flex items-center justify-center">
+          <motion.form
+            onSubmit={handleSubmit}
+            className="bg-white shadow-xl rounded-2xl p-8 max-w-4xl w-full space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <h2 className="text-3xl font-extrabold text-center text-gray-800">
+              Add New Equipment
+            </h2>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Image Upload */}
-              <div>
-                <label htmlFor="image" className="block font-medium mb-2">
-                  Image
-                </label>
+              {/* Photo URL */}
+              <label className="flex flex-col">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiImage /> Photo URL
+                </span>
                 <input
-                  type="text"
+                  type="url"
                   name="photo"
-                  placeholder="Enter photo URL"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                  placeholder="https://example.com/image.jpg"
+                  className={inputClasses}
+                  required
                 />
-              </div>
+              </label>
 
               {/* Item Name */}
-              <div>
-                <label htmlFor="itemName" className="block font-medium mb-2">
-                  Item Name
-                </label>
+              <label className="flex flex-col">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiBox /> Item Name
+                </span>
                 <input
                   type="text"
                   name="name"
-                  placeholder="Enter item name"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                  placeholder="Professional Cricket Bat"
+                  className={inputClasses}
+                  required
                 />
-              </div>
+              </label>
 
               {/* Category Name */}
-              <div>
-                <label
-                  htmlFor="categoryName"
-                  className="block font-medium mb-2"
-                >
-                  Category Name
-                </label>
+              <label className="flex flex-col">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiTag /> Category Name
+                </span>
                 <input
                   type="text"
                   name="categoryName"
-                  placeholder="Enter category name"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                  placeholder="Cricket"
+                  className={inputClasses}
+                  required
                 />
-              </div>
+              </label>
 
               {/* Price */}
-              <div>
-                <label htmlFor="price" className="block font-medium mb-2">
-                  Price
-                </label>
+              <label className="flex flex-col">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiDollarSign /> Price
+                </span>
                 <input
                   type="number"
                   name="price"
-                  placeholder="Enter price"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                  placeholder="99.99"
+                  step="0.01"
+                  min="0"
+                  className={inputClasses}
+                  required
                 />
-              </div>
+              </label>
 
-              {/* Description */}
-              <div className="md:col-span-2">
-                <label htmlFor="description" className="block font-medium mb-2">
-                  Description
-                </label>
+              {/* Description - span full width */}
+              <label className="flex flex-col md:col-span-2">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiAlignLeft /> Description
+                </span>
                 <textarea
                   name="description"
-                  placeholder="Enter item description"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                  rows="4"
+                  placeholder="Provide a detailed description of the item..."
+                  className={inputClasses}
+                  required
                 />
-              </div>
+              </label>
 
               {/* Rating */}
-              <div>
-                <label htmlFor="rating" className="block font-medium mb-2">
-                  Rating
-                </label>
+              <label className="flex flex-col">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiStar /> Rating (1-5)
+                </span>
                 <input
                   type="number"
                   name="rating"
-                  max="5"
+                  placeholder="4.8"
                   step="0.1"
-                  placeholder="Enter rating (out of 5)"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                  min="1"
+                  max="5"
+                  className={inputClasses}
+                  required
                 />
-              </div>
+              </label>
 
               {/* Customization */}
-              <div>
-                <label
-                  htmlFor="customization"
-                  className="block font-medium mb-2"
-                >
-                  Customization
-                </label>
+              <label className="flex flex-col">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiSettings /> Customization
+                </span>
                 <input
                   type="text"
                   name="customization"
-                  placeholder="Enter customizations (e.g., extra grip)"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                  placeholder="Extra grip, colors..."
+                  className={inputClasses}
+                  defaultValue="No"
+                  required
                 />
-              </div>
+              </label>
 
               {/* Processing Time */}
-              <div>
-                <label
-                  htmlFor="processingTime"
-                  className="block font-medium mb-2"
-                >
-                  Processing Time
-                </label>
+              <label className="flex flex-col">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiClock /> Processing Time
+                </span>
                 <input
-                  type="date"
+                  type="text"
                   name="processingTime"
-                  placeholder="Enter processing/delivery time"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                  placeholder="3-5 business days"
+                  className={inputClasses}
+                  required
                 />
-              </div>
+              </label>
 
               {/* Stock Status */}
-              <div>
-                <label htmlFor="stockStatus" className="block font-medium mb-2">
-                  Stock Status
-                </label>
+              <label className="flex flex-col">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiDatabase /> Stock Status
+                </span>
                 <input
-                  type="number"
+                  type="text"
                   name="stockStatus"
-                  placeholder="Enter available quantity"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-300"
+                  placeholder="In Stock, Made to Order"
+                  className={inputClasses}
+                  required
                 />
-              </div>
+              </label>
 
-              {/* User Email */}
-              <div>
-                <label htmlFor="userEmail" className="block font-medium mb-2">
-                  User Email
-                </label>
+              {/* User Email (readonly) */}
+              <label className="flex flex-col">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiMail /> Your Email
+                </span>
                 <input
                   type="email"
                   name="email"
-                  value={user?.email}
+                  value={user?.email || ""}
                   readOnly
-                  className="w-full border border-gray-300 bg-gray-100 rounded-lg px-4 py-2"
+                  className={`${inputClasses} bg-gray-100 cursor-not-allowed`}
                 />
-              </div>
+              </label>
 
-              {/* User Name */}
-              <div>
-                <label htmlFor="userName" className="block font-medium mb-2">
-                  User Name
-                </label>
+              {/* User Name (readonly) */}
+              <label className="flex flex-col">
+                <span className="flex items-center text-gray-700 mb-1 font-semibold gap-2">
+                  <FiUser /> Your Name
+                </span>
                 <input
                   type="text"
                   name="userName"
-                  value={user?.displayName}
+                  value={user?.displayName || ""}
                   readOnly
-                  className="w-full border border-gray-300 bg-gray-100 rounded-lg px-4 py-2"
+                  className={`${inputClasses} bg-gray-100 cursor-not-allowed`}
                 />
-              </div>
+              </label>
             </div>
 
             {/* Submit Button */}
-            <div className="flex justify-center">
-              <button className="bg-gradient-to-r from-blue-400 to-teal-400  text-white w-full px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition transform duration-300 hover:scale-105 active:scale-95">
-                Add Item
-              </button>
-            </div>
-          </form>
+            <motion.button
+              type="submit"
+              className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-teal-400 text-white font-bold py-3 rounded-xl shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300"
+              whileTap={{ scale: 0.95 }}
+            >
+              <FiPlusCircle size={20} />
+              Add Equipment
+            </motion.button>
+          </motion.form>
         </div>
       </Fade>
-    </div>
+    </>
   );
 };
 
