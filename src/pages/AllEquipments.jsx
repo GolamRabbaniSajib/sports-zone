@@ -1,82 +1,97 @@
-import { Rating } from "@smastrom/react-rating";
-import { useState } from "react";
-import { Zoom } from "react-awesome-reveal";
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { BsSortDown } from "react-icons/bs";
-import { IoAddCircle } from "react-icons/io5";
-import { MdPreview } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { IoAddCircle } from "react-icons/io5";
+import { BsSortNumericDown, BsSortNumericUp } from "react-icons/bs";
+import EquipmentCard from "../components/EquipmentCard";
 
 const AllEquipments = () => {
-  const items = useLoaderData();
-  const [sorts, setSorts] = useState(items);
-  const handleSort = () => {
-    const sortedItems = [...sorts].sort(
-      (a, b) => parseFloat(b.price) - parseFloat(a.price)
-    );
-    setSorts(sortedItems);
+  const initialItems = useLoaderData();
+  const [items, setItems] = useState(initialItems);
+  const [sortOrder, setSortOrder] = useState("desc");
+
+  useEffect(() => {
+    const sorted = [...initialItems].sort((a, b) => {
+      const priceA = parseFloat(a.price);
+      const priceB = parseFloat(b.price);
+      return sortOrder === "desc" ? priceB - priceA : priceA - priceB;
+    });
+    setItems(sorted);
+  }, [sortOrder, initialItems]);
+
+  const handleSortToggle = () => {
+    setSortOrder((prev) => (prev === "desc" ? "asc" : "desc"));
   };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
-    <div>
+    <>
       <Helmet>
         <title>Sport | All Equipments</title>
       </Helmet>
-      <Zoom>
-        <div className="w-11/12 mx-auto">
-          <h1 className="text-3xl font-semibold text-center pt-24 pb-10 bg-gradient-to-r from-blue-400 to-teal-400 text-transparent bg-clip-text">
-            All Sports <span className="">Equipments</span>
+      <div className="w-11/12 mx-auto my-16">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-500 to-teal-400 text-transparent bg-clip-text">
+            All Sports Equipments
           </h1>
-          <div className="py-16">
-            <div className="flex justify-between ">
-              <Link to={"/addEquip"}>
-                <button className="bg-teal-500 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-green-500/50 hover:bg-green-500 w-full">
-                  <IoAddCircle /> Add More
-                </button>
-              </Link>
-              <div>
-                <button
-                  onClick={handleSort}
-                  className="bg-blue-400 text-white font-medium btn rounded-lg shadow-md transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50 hover:bg-blue-300 w-full"
-                >
-                  <BsSortDown /> Sort By Price
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {sorts.map((item) => (
-              <div
-                key={item._id}
-                className="bg-gradient-to-r from-blue-400 to-teal-400 text-white p-6 rounded-lg shadow-md"
-              >
-                <img
-                  src={item.photo}
-                  alt={item.name}
-                  className="w-full h-48 object-cover rounded-t-lg mb-4"
-                />
-                <h2 className="text-2xl font-extrabold mb-2 text-pink-500">
-                  {item.name}
-                </h2>
-                <p className="flex justify-center items-center mb-4">
-                  <Rating
-                    style={{ maxWidth: 180 }}
-                    value={item.rating}
-                    readOnly
-                  />
-                </p>
-                <p className="text-lg font-bold mb-2">${item.price}</p>
+          <p className="mt-3 text-lg text-gray-600 max-w-2xl mx-auto">
+            Browse our complete collection of premium-quality sports gear and accessories.
+          </p>
+        </motion.div>
 
-                <Link to={`/viewDetail/${item._id}`}>
-                  <button className="w-full bg-white text-indigo-500 font-semibold py-2 px-4 rounded-lg transition duration-300 transform hover:bg-indigo-600 hover:text-white hover:scale-105">
-                    View Details
-                  </button>
-                </Link>
-              </div>
-            ))}
-          </div>
+        {/* Controls Section */}
+        <div className="my-10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <Link to="/addEquip" className="w-full md:w-auto">
+            <motion.button
+              className="flex items-center justify-center gap-2 w-full md:w-auto px-6 py-2.5 bg-teal-500 text-white rounded-lg font-medium shadow hover:bg-teal-600 transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <IoAddCircle size={20} /> Add Equipment
+            </motion.button>
+          </Link>
+
+          <motion.button
+            onClick={handleSortToggle}
+            className="flex items-center justify-center gap-2 w-full md:w-auto px-6 py-2.5 bg-blue-500 text-white rounded-lg font-medium shadow hover:bg-blue-600 transition-all"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {sortOrder === "desc" ? <BsSortNumericDown size={20} /> : <BsSortNumericUp size={20} />} Sort by Price
+          </motion.button>
         </div>
-      </Zoom>
-    </div>
+
+        {/* Grid Section */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <AnimatePresence>
+            {items.map((item) => (
+              <EquipmentCard key={item._id} item={item} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+    </>
   );
 };
 
